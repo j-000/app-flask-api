@@ -1,6 +1,4 @@
 import requests
-import re
-import json
 
 from . import UserModel, db, DEVELOPMENT
 
@@ -47,9 +45,6 @@ def test_create_user():
   assert 'user' in req.json().keys()
 
   # assert 'user' response object only contains 'email','id','is_admin' and 'name'
-  for prop in req.json()['user'].keys():
-    assert prop in ['email', 'id', 'is_admin', 'name']
-
   excepted_response = {
     "message": "User created.",
     "success": True,
@@ -81,6 +76,14 @@ def test_missing_params():
   assert req.status_code == 200
   # assert response object mathes expecteds
   expected_response = {'error':'Missing email field.'}
+  assert expected_response.items() == req.json().items()
+
+def test_missing_payload():
+  req = requests.post(base_url, json=None)
+  # assert status code
+  assert req.status_code == 200
+  # assert response object mathes expecteds
+  expected_response = {'error':'No data was sent with the request.'}
   assert expected_response.items() == req.json().items()
 
 def test_already_exists():

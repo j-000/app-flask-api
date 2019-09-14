@@ -1,9 +1,11 @@
 from server import app, api
 from apimodels import (
-  UserResource
+  UserResource,
+  Authentication
 )
 
 api.add_resource(UserResource, '/api/user')
+api.add_resource(Authentication, '/api/auth')
 
 
 @app.route('/')

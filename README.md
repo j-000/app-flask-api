@@ -24,4 +24,4 @@ virtualenv venv
 pip install -r requirements.txt
 pytest -v
 ```
-<img src="" height="300"/>
+<img src="https://github.com/j-000/ezresbackend/blob/master/repo/tests.png" height="300"/>

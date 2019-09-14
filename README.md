@@ -12,7 +12,6 @@
   </a>
 </p>
 
-
 This project contains a boilerplate backend Authentication module with Login, Logout and Refresh session capabilities base on JWT technology. For the JWT this project uses [PyJWT](https://pyjwt.readthedocs.io/en/latest/).
 
 It has been implemented using [Flask-RESTful](https://flask-restful.readthedocs.io/en/latest/) and has been rigourously tested using [pytest](https://docs.pytest.org/en/latest/).
@@ -34,5 +33,89 @@ pytest -v
 <img src="https://github.com/j-000/ezresbackend/blob/master/repo/tests.png" height="300"/>
 
 :warning: Make sure you change the applicationsecrets.py details, expecially the `SECRET_KEY` and `SECURITY_PASSWORD_SALT` :warning:
+
+## Try it
+Current API routes are:
+
+Register a user
+```
+POST /api/user
+
+payload={'email':'joao@example.com', 'name':'Joao', 'password':'test123'}
+
+# response
+{
+  "message": "User created.",
+  "success": true,
+  "user": {
+    "email": "joao@example.com",
+    "id": 1,
+    "is_admin": false,
+    "name": "Joao"
+  }
+}
+```
+
+Get total users registeres
+```
+GET /api/user
+
+# response
+{
+  "usersRegistered": 1
+}
+```
+
+Login
+```
+POST /api/auth
+
+payload={'email':'joao@example.com', 'password':'test123'}
+
+# response
+{
+  "expires": 3600,
+  "success": true,
+  "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2VtYWlsIjoiYUBiLmN3IiwiaWQiOjEsImV4cCI6MTU2ODUwMDgzMy43MTIzMzEzfQ.ZAC8z71WOuvMToh2IbqdqHDAX_mcJSnlWevKONqAJp4"
+}
+```
+
+Refresh Token
+```
+PUT /api/auth
+headers={'Authorization':f'Bearer {token}'}
+
+# response
+{
+  "success": "New token.",
+  "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2VtYWlsIjoiYUBiLmN3IiwiaWQiOjEsImV4cCI6MTU2ODUwMDk2My40MzMzMTI0fQ.qohZ4ptK5KqMLK-cx11f-Qc_E-yw-8WuNggvOF13rwg"
+}
+```
+
+Logout
+```
+DELETE /api/auth
+headers={'Authorization':f'Bearer {token}'}
+
+# response
+{
+  "success": "Logged out."
+}
+```
+DELETE /api/auth
+headers={'Authorization':f'Bearer {token}'}
+
+# response
+
+```
+
+```
+POST /api/auth 
+PUT /api/auth
+DELETE /api/auth
+
+```
+
+
 
 Licence MIT

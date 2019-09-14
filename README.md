@@ -37,7 +37,7 @@ pytest -v
 ## Try it
 Current API routes are:
 
-Register a user
+Register a user.
 ```
 POST /api/user
 
@@ -56,7 +56,7 @@ payload={'email':'joao@example.com', 'name':'Joao', 'password':'test123'}
 }
 ```
 
-Get total users registeres
+Get total users registered.
 ```
 GET /api/user
 
@@ -66,7 +66,7 @@ GET /api/user
 }
 ```
 
-Login
+Login.
 ```
 POST /api/auth
 
@@ -76,11 +76,11 @@ payload={'email':'joao@example.com', 'password':'test123'}
 {
   "expires": 3600,
   "success": true,
-  "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2VtYWlsIjoiYUBiLmN3IiwiaWQiOjEsImV4cCI6MTU2ODUwMDgzMy43MTIzMzEzfQ.ZAC8z71WOuvMToh2IbqdqHDAX_mcJSnlWevKONqAJp4"
+  "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1Ni...AC8z71WOuvMToh2IbqdqHDAX_mcJSnlWevKONqAJp4"
 }
 ```
 
-Refresh Token
+Refresh Token.
 ```
 PUT /api/auth
 headers={'Authorization':f'Bearer {token}'}
@@ -88,11 +88,11 @@ headers={'Authorization':f'Bearer {token}'}
 # response
 {
   "success": "New token.",
-  "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2VtYWlsIjoiYUBiLmN3IiwiaWQiOjEsImV4cCI6MTU2ODUwMDk2My40MzMzMTI0fQ.qohZ4ptK5KqMLK-cx11f-Qc_E-yw-8WuNggvOF13rwg"
+  "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1...hZ4ptK5KdrdgqMLK-cx11f-Qc_E-yw-8WuNggvOF13rwg"
 }
 ```
 
-Logout
+Logout.
 ```
 DELETE /api/auth
 headers={'Authorization':f'Bearer {token}'}
@@ -102,20 +102,5 @@ headers={'Authorization':f'Bearer {token}'}
   "success": "Logged out."
 }
 ```
-DELETE /api/auth
-headers={'Authorization':f'Bearer {token}'}
-
-# response
-
-```
-
-```
-POST /api/auth 
-PUT /api/auth
-DELETE /api/auth
-
-```
-
-
 
 Licence MIT

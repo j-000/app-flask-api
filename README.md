@@ -69,8 +69,8 @@ GET /api/user
 Login.
 ```
 POST /api/auth
-
-payload={'email':'joao@example.com', 'password':'test123'}
+headers = {'content-type':'application/json'}
+payload = {'email':'joao@example.com', 'password':'test123'}
 
 # response
 {
@@ -83,7 +83,7 @@ payload={'email':'joao@example.com', 'password':'test123'}
 Refresh Token.
 ```
 PUT /api/auth
-headers={'Authorization':f'Bearer {token}'}
+headers = {'Authorization':f'Bearer {token}'}
 
 # response
 {
@@ -95,7 +95,7 @@ headers={'Authorization':f'Bearer {token}'}
 Logout.
 ```
 DELETE /api/auth
-headers={'Authorization':f'Bearer {token}'}
+headers = {'Authorization':f'Bearer {token}'}
 
 # response
 {
